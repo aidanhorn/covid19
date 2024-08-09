@@ -242,7 +242,7 @@ province_cases <- province_graph +
         data=coronavirus,
         mapping=aes(x=date, y=change),
         color="#8D5F3B", # "#b1c8cc",
-        alpha=0.4, # 0.8, # 1,
+        alpha=0.2, # 0.8, # 1,
         lwd=0.3  # 0.7
     ) +
     geom_line(
@@ -251,7 +251,7 @@ province_cases <- province_graph +
         lwd=0.8
     ) +
     labs(
-        caption=paste("Last date:", coronavirus$date[nrow(coronavirus)], "\nAidan Horn <www.aidanhorn.co.za/blog/graphs>\nSmoothing function: first derivative of a stochastic filter on total cases.")
+        caption=paste("Last date:", coronavirus$date[nrow(coronavirus)], "\nAidan Horn <www.aidanhorn.co.za/blog/computing/shiny/covid-19>\nSmoothing function: first derivative of a stochastic filter on total cases.")
     )
 
 
@@ -275,18 +275,18 @@ levelyscale <- province_cases +
         ylim=c(0, 10000) # 66000)
     ) +
     geom_text(
-    data=coronavirus,
-     x=ymd("2023-02-15"), # ymd("2020-04-15"),
-     y=9600, # 57000,
-     aes(
+      data=coronavirus,
+      x=ymd("2023-02-15"), # ymd("2020-04-15"),
+      y=9600, # 57000,
+      aes(
        label=Province,
        hjust=1,
        vjust=1
-     ),
-     size=3.8,
-     fontface="plain",
-     check_overlap=T
-   )
+      ),
+      size=3.8,
+      fontface="plain",
+      check_overlap=T
+    )
 levelyscale
 
 png(
@@ -312,9 +312,9 @@ province_cases_story <- province_graph +
     geom_line(
         data=filter(coronavirus, Province!="Limpopo"),
         mapping=aes(x=date, y=change),
-        color="#8D5F3B",  # "#b1c8cc",
-        alpha=0.4, # 0.8, # 1,
-        lwd=0.3  # 0.7
+        color="#d1996d",  # "#b1c8cc",
+        alpha=0.3, # 0.4
+        lwd=0.2  # 0.3
     ) +
     geom_line(
         data=filter(coronavirus, Province!="Limpopo"),
@@ -458,7 +458,7 @@ logyscale_story_WA <- province_cases_story +
       title="Daily new confirmed cases of covid-19",
       subtitle="South African provinces",
       y="Daily cases (log scale)",
-      caption=paste("Last date: ", coronavirus$date[nrow(coronavirus)], "\nAidan Horn <www.aidanhorn.co.za/blog/graphs>")
+      caption=paste("Last date: ", coronavirus$date[nrow(coronavirus)], "\nAidan Horn <www.aidanhorn.co.za/blog/computing/shiny/covid-19>")
    ) +
    geom_text(
       data=filter(coronavirus, Province!="Limpopo"),
@@ -575,7 +575,7 @@ deathsplot <- province_graph +
         mapping=aes(x=date, y=change),
         color="#8D5F3B", # "#b1c8cc",
         lwd=0.28,
-        alpha=0.3  # 0.64
+        alpha=0.2  # 0.64
     ) +
     geom_line(
         data=filter(deaths, date>ymd("2020-03-30")),
@@ -591,7 +591,7 @@ deathsplot <- province_graph +
         title="Daily new confirmed covid-19 deaths, over time",
         subtitle="Across South African provinces",
         y="Daily deaths",
-        caption=paste("Last date:", coronavirus$date[nrow(coronavirus)], "\nAidan Horn <www.aidanhorn.co.za/blog/graphs>\nSmoothing function: first derivative of a stochastic filter on total deaths.")
+        caption=paste("Last date:", coronavirus$date[nrow(coronavirus)], "\nAidan Horn <www.aidanhorn.co.za/blog/computing/shiny/covid-19>\nSmoothing function: first derivative of a stochastic filter on total deaths.")
     ) +
     scale_y_continuous(
         breaks=seq(0, 250, 50),  # 20000, 500)
@@ -600,12 +600,12 @@ deathsplot <- province_graph +
     ) +
     coord_cartesian(
         xlim=c(ymd("2022-03-15"), ymd("2023-03-14")), # coronavirus$date[nrow(coronavirus)]),
-        ylim=c(0, 155) # 1150) for weekly change
+        ylim=c(0, 152) # 1150) for weekly change
     ) +
     geom_text(
     data=deaths,
      x=ymd("2022-12-26"),
-     y=140,  # 1150,
+     y=145,  # 1150,
      aes(
        label=Province,
        hjust=1,

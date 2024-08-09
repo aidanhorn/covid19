@@ -1,0 +1,5 @@
+rsconnect/
+Archive/
+.Rhistory
+*.csv
+Rplots.pdf

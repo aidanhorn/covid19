@@ -106,7 +106,7 @@ WCarima <- sarima.for(
             ),
         log(WCchange)), 
     n.ahead=35, 
-    10, 1, 4, 1, 1, 1, 7
+    8, 1, 4, 1, 1, 1, 7
 )
 
 KZNarima <- sarima.for(
@@ -285,7 +285,7 @@ AidanProvgraph <- list(
         legend.box.margin=margin(t=-1/Prov.base.size*80, b=-1/Prov.base.size*80)
     ),
     labs(
-        caption=paste("Last date:", last_date, "\nAnalysis by Aidan Horn  <www.aidanhorn.co.za/blog/graphs>\nSmoothing function: first derivative of a stochastic filter on total.")
+        caption=paste("Last date:", last_date, "\nAnalysis by Aidan Horn  <www.aidanhorn.co.za/blog/computing/shiny/covid-19>\nSmoothing function: first derivative of a stochastic filter on total.")
         # , subtitle="Two-week rolling average"
     ),
     coord_cartesian( xlim=c(ymd("2020-03-30"), NA) )
@@ -360,7 +360,7 @@ AidanWCgraph <- ggplot() +
         ylim=c(0, 3600)
     ) +
     labs(
-        caption=paste("Last date:", last_date, "\nAnalysis by Aidan Horn  <www.aidanhorn.co.za/blog/graphs>\nSmoothing function: first derivative of a stochastic filter on total.\nTwo-week forecast: SARIMA(10, 1, 4)(1, 1, 1)7 on log daily change."
+        caption=paste("Last date:", last_date, "\nAnalysis by Aidan Horn  <www.aidanhorn.co.za/blog/computing/shiny/covid-19>\nSmoothing function: first derivative of a stochastic filter on total.\nTwo-week forecast: SARIMA(8, 1, 4)(1, 1, 1)7 on log daily change."
         )
     )
 
@@ -585,7 +585,8 @@ AidanWCdeathgraph <- ggplot() +
     labs( 
       title="Western Cape",
       subtitle="Daily new confirmed covid-19 deaths, over time",
-      y="Daily deaths"
+      y="Daily deaths",
+      caption=paste("Last date:", last_date, "\nAnalysis by Aidan Horn  <www.aidanhorn.co.za/blog/computing/shiny/covid-19>\nSmoothing function: first derivative of a stochastic filter on total deaths\nThree-week forecast: SARIMA(7, 1, 3)(1, 1, 1)7 on log daily change..")
     ) +
     scale_y_continuous(
         breaks=seq(0, 200, by=25), 
@@ -670,7 +671,7 @@ AidanKZNgraph <- ggplot() +
       panel.grid.minor.y=element_blank()
     ) +
     labs(
-        caption=paste("Last date:", last_date, "\nAnalysis by Aidan Horn  <www.aidanhorn.co.za/blog/graphs>\nSmoothing function: first derivative of a stochastic filter on total.\nTwo-week forecast: SARIMA(7, 1, 3)(1, 1, 1)7 on log daily change.")
+        caption=paste("Last date:", last_date, "\nAnalysis by Aidan Horn  <www.aidanhorn.co.za/blog/computing/shiny/covid-19>\nSmoothing function: first derivative of a stochastic filter on total.\nTwo-week forecast: SARIMA(7, 1, 3)(1, 1, 1)7 on log daily change.")
     )
 
 
@@ -744,7 +745,7 @@ AidanGPgraph <- ggplot() +
       panel.grid.minor.y=element_blank()
    ) +
    labs(
-      caption=paste("Last date:", last_date, "\nAnalysis by Aidan Horn  <www.aidanhorn.co.za/blog/graphs>\nSmoothing function: first derivative of a stochastic filter on total.\nTwo-week forecast: SARIMA(7, 1, 3)(1, 1, 1)7 on log daily change.")
+      caption=paste("Last date:", last_date, "\nAnalysis by Aidan Horn  <www.aidanhorn.co.za/blog/computing/shiny/covid-19>\nSmoothing function: first derivative of a stochastic filter on total.\nTwo-week forecast: SARIMA(7, 1, 3)(1, 1, 1)7 on log daily change.")
    )
 
 
@@ -871,7 +872,7 @@ AidanCTgraph <- ggplot() +
     ) +
     labs(
         title="Cape Town",
-        caption=paste("Last date:", CT$date[nrow(filter(CT, !is.na(CTchange)))], "\nSource: https://coronavirus.westerncape.gov.za/news\nAnalysis by Aidan Horn  <www.aidanhorn.co.za/blog/graphs>\nSmoothing function used is an HP filter.")
+        caption=paste("Last date:", CT$date[nrow(filter(CT, !is.na(CTchange)))], "\nSource: https://coronavirus.westerncape.gov.za/news\nAnalysis by Aidan Horn  <www.aidanhorn.co.za/blog/computing/shiny/covid-19>\nSmoothing function used is an HP filter.")
     ) +
     scale_y_continuous(
         breaks=seq(0, 4000, by=500), 
